@@ -1,0 +1,199 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono");
+
+:root {
+  --bg: #5f4b8b;
+  --fg: #ffffff;
+  --secondaryFg: #b3b3b3;
+  --containerBg: #272727;
+  --searchBg: var(--containerBg);
+  --scrollbarColor: #3f3f3f;
+  --fontFamily: "Roboto Mono", monospace;
+}
+
+body {
+  background-color: var(--bg);
+  margin: 0px;
+  overflow-y: hidden;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#clock {
+  font-family: sans-serif;
+  font-size: 3.5rem;
+  font-weight: 600;
+  font-family: var(--fontFamily);
+  color: var(--fg);
+  margin-bottom: 0.25em;
+}
+
+#search {
+  height: 9vh;
+  position: relative;
+  margin: 0 auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 7rem;
+}
+
+#search-field {
+  width: 30%;
+  -webkit-writing-mode: horizontal-tb !important;
+  writing-mode: horizontal-tb;
+  text-rendering: auto;
+  color: -internal-light-dark(black, white);
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  appearance: auto;
+  background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+  -webkit-rtl-ordering: logical;
+  cursor: text;
+  margin: 0em;
+  font: 400 18.3333px Arial;
+  padding: 15px 15px;
+  border-width: 2px;
+  border-style: inset;
+  border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+  border-image: initial;
+}
+
+.weather-container {
+  width: 30%;
+  background-color: var(--containerBg);
+  padding: 1em;
+  border-radius: 3px;
+  font-family: var(--fontFamily);
+  color: var(--fg);
+  text-align: center;
+}
+
+.inline {
+  display: inline-block;
+}
+
+#bookmark-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 50%;
+  margin: 1em 0em;
+}
+
+@media only screen and (max-width: 960px) {
+  .container {
+    height: auto;
+  }
+  #clock {
+    margin-top: 1em;
+  }
+  .container > .bookmark-container {
+    flex-direction: column;
+    width: 60%;
+  }
+  .bookmark-container > .bookmark-set {
+    width: auto;
+    margin: 1em 0em;
+  }
+}
+
+.bookmark-set {
+  padding: 1em;
+  background-color: var(--containerBg);
+  border-radius: 3px;
+  font-family: var(--fontFamily);
+  font-size: 0.85rem;
+  width: 25%;
+  height: 12em;
+  margin: 0em 0.5em;
+  box-sizing: border-box;
+}
+
+.bookmark-inner-container {
+  overflow-y: scroll;
+  height: 80%;
+  vertical-align: top;
+  padding-right: 6px;
+  box-sizing: border-box;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbarColor) #ffffff00;
+}
+
+.bookmark-inner-container::-webkit-scrollbar {
+  width: 6px;
+}
+.bookmark-inner-container::-webkit-scrollbar-track {
+  background: #ffffff00;
+}
+.bookmark-inner-container::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbarColor);
+  border-radius: 6px;
+  border: 3px solid #ffffff00;
+}
+
+.bookmark-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--fg);
+  margin: 0em 0em 0.35em 0em;
+}
+.bookmark {
+  text-decoration: none;
+  color: var(--secondaryFg);
+  display: block;
+  margin: 0.5em 0em;
+}
+.bookmark:hover {
+  color: var(--fg);
+}
+
+/**************************************
+ *
+ * MY CUSTOMIZATIONS
+ *
+*************************************/
+
+.name-container {
+  display: flex;
+  width: 35%;
+  padding: 1em;
+  border-radius: 3px;
+  font-family: var(--fontFamily);
+  color: var(--containerBg);
+  text-align: center;
+  font-size: 3em;
+  font-weight: 700;
+  margin-top: -20rem;
+}
+
+#greeting {
+  margin-right: 1rem;
+}
+
+#my-name {
+  color: #ddddff;
+}
+
+#weather-icon {
+  margin: 0;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  display: block;
+  margin: 0 auto;
+}
