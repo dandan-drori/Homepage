@@ -19,12 +19,7 @@ const bookmarks = [
   {
     title: "Useful",
     links: [
-      { name: "/r/unixporn", url: "https://reddit.com/r/unixporn" },
       { name: "Commit Emojis", url: "https://gitmoji.dev" },
-      {
-        name: "Emojis Unicode",
-        url: "https://unicode.org/emoji/charts/full-emoji-list.html",
-      },
       {
         name: "Math in MD",
         url: "https://rpruim.github.io/s341/S19/from-class/MathinRmd.html",

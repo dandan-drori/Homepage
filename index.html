@@ -61,21 +61,26 @@
           hour = date.getHours();
 
         // handle different day times
-        const nameEl = document.getElementById("greeting");
+        const grettingEl = document.getElementById("greeting");
+        const nameEl = document.getElementById("my-name");
         document.body.style.backgroundRepeat = "no-repeat";
         document.body.style.backgroundSize = "100% 100%";
-        if (hour < 12 && hour > 6) {
+        // morning: 06:00 - 12:00
+        if (hour > 6 && hour < 12) {
           document.body.style.backgroundColor = "#BBCCDD";
-          nameEl.innerHTML = "Good Morning,";
+          grettingEl.innerHTML = "Good Morning,";
+          nameEl.style.color = "#334455";
           document.body.style.backgroundImage = "url('./morning1.jpg')";
-        } else if (hour > 12 && hour < 18) {
+        // afternoon: 12:00 - 18:00
+        } else if (hour >= 12 && hour < 18) {
           document.body.style.backgroundColor = "#2277AA";
-          nameEl.innerHTML = "Good Afternoon,";
+          grettingEl.innerHTML = "Good Afternoon,";
           document.body.style.backgroundImage = "url('./afternoon.jpg')";
+        // evening: 18:00 - 06:00
         } else {
           document.body.style.backgroundColor = "#334455";
-          nameEl.innerHTML = "Good Evening,";
-          nameEl.style.color = "#fefefe";
+          grettingEl.innerHTML = "Good Evening,";
+          grettingEl.style.color = "#fefefe";
           document.body.style.backgroundImage = "url('./night1.jpg')";
         }
 
@@ -121,6 +126,7 @@
       // Handle writing out Bookmarks
       function setupBookmarks() {
         const bookmarkContainer = document.getElementById("bookmark-container");
+        let count = 0;
         bookmarkContainer.innerHTML = bookmarks
           .map((b) => {
             const html = ["<div class='bookmark-set'>"];
@@ -128,10 +134,11 @@
             html.push('<div class="bookmark-inner-container">');
             html.push(
               ...b.links.map(
-                (l) =>
-                  `<a class="bookmark" href="${l.url}" target="_blank">${l.name}</a>`
+                (l, i) =>
+                  `<a class="bookmark" href="${l.url}" target="_blank">${String.fromCharCode(i+97+count) + ". " + l.name}</a>`
               )
             );
+            count+=3;
             html.push("</div></div>");
             return html.join("");
           })
@@ -159,6 +166,32 @@
           document.getElementById("search-field").value = "";
           document.getElementById("search-field").blur();
           document.getElementById("search").style.display = "none";
+        } else if (event.keyCode == 65) {
+          document.getElementsByClassName("bookmark")[0].click(); <!-- a -->
+        } else if (event.keyCode == 66) {
+          document.getElementsByClassName("bookmark")[1].click(); <!-- b -->
+        } else if (event.keyCode == 67) {
+          document.getElementsByClassName("bookmark")[2].click(); <!-- c -->
+        } else if (event.keyCode == 68) {
+          document.getElementsByClassName("bookmark")[3].click(); <!-- d -->
+        } else if (event.keyCode == 69) {
+          document.getElementsByClassName("bookmark")[4].click(); <!-- e -->
+        } else if (event.keyCode == 70) {
+          document.getElementsByClassName("bookmark")[5].click(); <!-- f -->
+        } else if (event.keyCode == 71) {
+          document.getElementsByClassName("bookmark")[6].click(); <!-- g -->
+        } else if (event.keyCode == 72) {
+          document.getElementsByClassName("bookmark")[7].click(); <!-- h -->
+        } else if (event.keyCode == 73) {
+          document.getElementsByClassName("bookmark")[8].click(); <!-- i -->
+        } else if (event.keyCode == 74) {
+          document.getElementsByClassName("bookmark")[9].click(); <!-- j -->
+        } else if (event.keyCode == 75) {
+          document.getElementsByClassName("bookmark")[10].click(); <!-- k -->
+        } else if (event.keyCode == 76) {
+          document.getElementsByClassName("bookmark")[11].click(); <!-- l -->
+        } else if (event.keyCode == 77) {
+          document.getElementsByClassName("bookmark")[12].click(); <!-- m -->
         }
       });
     </script>
