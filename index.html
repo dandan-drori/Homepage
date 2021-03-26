@@ -8,6 +8,7 @@
     <title>Homepage</title>
     <link rel="stylesheet" href="styles.css" />
     <link href="favicon.png" rel="shortcut icon" type="image/x-icon" />
+    <script src="https://kit.fontawesome.com/a91f9c67ce.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <div id="search">
@@ -56,8 +57,10 @@
       // Get current time and format
       function getTime() {
         let date = new Date(),
+          day = date.getDay(),
+          month = date.getMonth(),
+          dom = date.getDate(),
           min = date.getMinutes(),
-          sec = date.getSeconds(),
           hour = date.getHours();
 
         // handle different day times
@@ -84,14 +87,20 @@
           document.body.style.backgroundImage = "url('./night1.jpg')";
         }
 
+        const dayString = day == 0 ? "Sun" : day == 1 ? "Mon" : day == 2 ? "Tue" : day == 3 ? "Wed" : day == 4 ? "Thu" : day == 5 ? "Fri" : "Sat";
+        const monthString = month == 0 ? "Jan" : month == 1 ? "Feb" : month == 2 ? "Mar" : month == 3 ? "Apr" : month == 4 ? "May" : month == 5 ? "Jun" : month == 6 ? "Jul" : month == 7 ? "Aug" : month == 8 ? "Sep" : month == 9 ? "Oct" : month == 10 ? "Nov" : "Dec";
 
         return (
           "" +
+          (dayString) +
+          " " +
+          (monthString) +
+          " " +
+          (dom) +
+          ", " +
           (hour < 10 ? "0" + hour : hour) +
           ":" +
-          (min < 10 ? "0" + min : min) +
-          ":" +
-          (sec < 10 ? "0" + sec : sec)
+          (min < 10 ? "0" + min : min)
         );
       }
 
@@ -126,19 +135,24 @@
       // Handle writing out Bookmarks
       function setupBookmarks() {
         const bookmarkContainer = document.getElementById("bookmark-container");
-        let count = 0;
+        <!-- this const is holding the number of links in the *previous* box -->
+        const numOfLinksInPrevBox = [0, 3, 3, 3];
         bookmarkContainer.innerHTML = bookmarks
-          .map((b) => {
+          .map((b, index) => {
             const html = ["<div class='bookmark-set'>"];
             html.push(`<div class="bookmark-title">${b.title}</div>`);
             html.push('<div class="bookmark-inner-container">');
             html.push(
               ...b.links.map(
                 (l, i) =>
-                  `<a class="bookmark" href="${l.url}" target="_blank">${String.fromCharCode(i+97+count) + ". " + l.name}</a>`
+                `<div style="display:flex;">
+                <img width="${l.imgSize}" height="${l.imgSize}" src="${l.imgSrc}" class="link-icon"/>
+                <!-- i: increments the letters inside each box (a, b, c. and then d, e, f...) -->
+                <!-- 97: 97 is ascii for the character "a" -->
+                <!-- index*numOfLinksInPrevBox: increments the letters between boxes -->
+                <a class="bookmark" href="${l.url}" target="_blank">${String.fromCharCode(i+97+index*numOfLinksInPrevBox[index]) + ". " + l.name}</a></div>`
               )
             );
-            count+=3;
             html.push("</div></div>");
             return html.join("");
           })
