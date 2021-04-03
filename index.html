@@ -7,7 +7,7 @@
 
     <title>Homepage</title>
     <link rel="stylesheet" href="styles.css" />
-    <link href="favicon.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="icons/favicon.png" rel="shortcut icon" type="image/x-icon" />
     <script src="https://kit.fontawesome.com/a91f9c67ce.js" crossorigin="anonymous"></script>
   </head>
   <body>
@@ -73,18 +73,18 @@
           document.body.style.backgroundColor = "#BBCCDD";
           grettingEl.innerHTML = "Good Morning,";
           nameEl.style.color = "#334455";
-          document.body.style.backgroundImage = "url('./morning1.jpg')";
+          document.body.style.backgroundImage = "url('./images/morning1.jpg')";
         // afternoon: 12:00 - 18:00
         } else if (hour >= 12 && hour < 18) {
           document.body.style.backgroundColor = "#2277AA";
           grettingEl.innerHTML = "Good Afternoon,";
-          document.body.style.backgroundImage = "url('./afternoon.jpg')";
+          document.body.style.backgroundImage = "url('./images/afternoon.jpg')";
         // evening: 18:00 - 06:00
         } else {
           document.body.style.backgroundColor = "#334455";
           grettingEl.innerHTML = "Good Evening,";
           grettingEl.style.color = "#fefefe";
-          document.body.style.backgroundImage = "url('./night1.jpg')";
+          document.body.style.backgroundImage = "url('./images/night1.jpg')";
         }
 
         const dayString = day == 0 ? "Sun" : day == 1 ? "Mon" : day == 2 ? "Tue" : day == 3 ? "Wed" : day == 4 ? "Thu" : day == 5 ? "Fri" : "Sat";
@@ -136,7 +136,7 @@
       function setupBookmarks() {
         const bookmarkContainer = document.getElementById("bookmark-container");
         <!-- this const is holding the number of links in the *previous* box -->
-        const numOfLinksInPrevBox = [0, 3, 3, 3];
+        const numOfLinksTillBox = [0, 3, 7, 10];
         bookmarkContainer.innerHTML = bookmarks
           .map((b, index) => {
             const html = ["<div class='bookmark-set'>"];
@@ -149,8 +149,8 @@
                 <img width="${l.imgSize}" height="${l.imgSize}" src="${l.imgSrc}" class="link-icon"/>
                 <!-- i: increments the letters inside each box (a, b, c. and then d, e, f...) -->
                 <!-- 97: 97 is ascii for the character "a" -->
-                <!-- index*numOfLinksInPrevBox: increments the letters between boxes -->
-                <a class="bookmark" href="${l.url}" target="_blank">${String.fromCharCode(i+97+index*numOfLinksInPrevBox[index]) + ". " + l.name}</a></div>`
+                <!-- index*numOfLinksTillBox: increments the letters between boxes -->
+                <a class="bookmark" href="${l.url}">${String.fromCharCode(i+97+numOfLinksTillBox[index]) + ". " + l.name}</a></div>`
               )
             );
             html.push("</div></div>");

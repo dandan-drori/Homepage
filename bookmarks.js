@@ -27,7 +27,7 @@ const bookmarks = [
     ],
   },
   {
-    title: "Linux",
+    title: "Linux / Dev",
     links: [
       {
         name: "Arch",
@@ -41,6 +41,13 @@ const bookmarks = [
         imgSize: "30",
         imgSrc:
           "file:/home/dandan/Installed Programs/Homepage/icons/stackoverflow.png",
+      },
+      {
+        name: "Firebase",
+        url: "https://firebase.google.com",
+        imgSize: "30",
+        imgSrc:
+          "file:/home/dandan/Installed Programs/Homepage/icons/firebase.png",
       },
       {
         name: "Cronjob",
