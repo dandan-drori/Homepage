@@ -24,11 +24,25 @@ const bookmarks = [
         imgSrc:
           "file:/home/dandan/Installed Programs/Homepage/icons/netflix.png",
       },
+      {
+        name: "Linkedin",
+        url: "https://linkedin.com",
+        imgSize: "30",
+        imgSrc:
+          "file:/home/dandan/Installed Programs/Homepage/icons/linkedin.png",
+      },
     ],
   },
   {
     title: "Linux / Dev",
     links: [
+      {
+        name: "Localhost",
+        url: "http://localhost:3000",
+        imgSize: "30",
+        imgSrc:
+          "file:/home/dandan/Installed Programs/Homepage/icons/localhost.png",
+      },
       {
         name: "Arch",
         url: "https://archlinux.org",
@@ -41,6 +55,12 @@ const bookmarks = [
         imgSize: "30",
         imgSrc:
           "file:/home/dandan/Installed Programs/Homepage/icons/stackoverflow.png",
+      },
+      {
+        name: "Npm",
+        url: "https://www.npmjs.com",
+        imgSize: "30",
+        imgSrc: "file:/home/dandan/Installed Programs/Homepage/icons/npm.png",
       },
       {
         name: "Firebase",
